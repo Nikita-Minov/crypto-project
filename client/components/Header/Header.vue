@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <div class="header-wrapper">
+  <header class="header-wrapper">
     <div class="header">
       <NuxtLink class="logo" to="#">
         <img src="../../assets/img/logo.svg" alt="logo">
@@ -40,7 +40,7 @@
         <img src="/menu.png" class="burger__icon" alt="menu button">
       </div>
     </div>
-  </div>
+  </header>
   <div class="line"></div>
 </template>
 
