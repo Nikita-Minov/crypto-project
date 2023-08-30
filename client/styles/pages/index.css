@@ -19,33 +19,12 @@
     margin: 0 auto 80px auto;
     grid-template-columns: 48% 52%;
 
-    @media(max-width: 1720px) {
-        grid-template-columns: 20% 60% 20%;
-    }
-
-    @media(max-width: 1200px) {
-        width: 95%;
-    }
-
-    @media(max-width: 768px) {
-        grid-template-columns: 5% 90% 5%;
-    }
 }
 
 .left-block {
     width: 100%;
     height: max-content;
     background-position: 100% -100px;
-
-    @media(max-width: 1720px) {
-        grid-column: 2;
-    }
-
-    @media(max-width: 768px) {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
 }
 
 .left-block__header {
@@ -74,13 +53,7 @@
     line-height: 80px;
     margin-top: 35px;
 
-    @media(max-width: 768px) {
-        font-size: 62px;
-    }
 
-    @media(max-width: 576px) {
-        font-size: 38px;
-    }
 }
 
 .right-block {
@@ -95,9 +68,7 @@
     max-width: 640px;
     max-height: 280px;
 
-    @media(max-width: 1720px) {
-        display: none;
-    }
+
 }
 
 .input-block {
@@ -105,11 +76,6 @@
     grid-template-columns: 1% 79% 19% 1%;
     width: 430px;
     margin-top: 50px;
-
-    @media(max-width: 576px) {
-        width: 100%;
-        grid-template-columns: 1% 69% 29% 1%;
-    }
 }
 
 .input-block::after {
@@ -181,11 +147,6 @@
 .courses {
     width: 80%;
     margin: auto;
-
-
-    @media(max-width: 1200px) {
-        width: 95%;
-    }
 }
 
 .courses-table {
@@ -201,11 +162,6 @@
     display: grid;
     grid-template-columns: 52% 12% 12% 12% 12%;
     border-bottom: 1px solid #232F3F;
-
-    @media(max-width: 992px) {
-        grid-template-columns: 100%;
-        grid-template-rows: 20% 20% 20% 20% 20%;
-    }
 }
 
 .courses-table__row__item {
@@ -214,18 +170,10 @@
     align-items: center;
     padding: 25px;
 
-    @media(max-width: 992px) {
-        padding: 20px;
-        border-bottom: 1px solid #232F3F;
-    }
 }
 
 .courses-table__head__item-start {
     justify-content: flex-start;
-
-    @media(max-width: 992px) {
-        justify-content: center;
-    }
 }
 
 .courses-table__head__item-center{
@@ -350,27 +298,12 @@
     grid-template-columns: 45% 50%;
     gap: 5%;
 
-    @media(max-width: 1200px) {
-        width: 95%;
-        grid-template-columns: 100%;
-        grid-template-rows: min-content min-content;
-        gap: 0;
-        grid-row-gap: 40px;
-    }
-
-    @media(max-width: 992px) {
-        grid-row-gap: 60px;
-    }
 }
 
 .exchanges__block {
     width: 100%;
     height: auto;
     padding: 60px;
-    @media(max-width: 1200px) {
-        padding: 30px;
-        margin-top: 40px;
-    }
 }
 
 .exchanges__block-flex {
@@ -404,16 +337,6 @@
 
 .exchanges-img {
     max-width: 580px;
-
-    @media(max-width: 1720px) {
-        max-width: 480px;
-    }
-
-    @media(max-width: 576px) {
-        max-width: 95%;
-    }
-
-
 }
 
 .line {
@@ -426,15 +349,6 @@
     width: 60%;
     margin: auto;
     height: min-content;
-
-
-    @media(max-width: 1200px) {
-        width: 75%;
-    }
-    @media(max-width: 992px) {
-        width: 95%;
-    }
-
 }
 
 .advantages-block {
@@ -445,10 +359,6 @@
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 85px;
-
-    @media(max-width: 768px) {
-        justify-content: center;
-    }
 }
 
 .advantage-card {
@@ -489,10 +399,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-
-    @media(max-width: 1200px) {
-        width: 95%;
-    }
 }
 
 .register-section__title {
@@ -514,7 +420,118 @@
     width: 430px;
     margin-bottom: 165px;
 
-    @media(max-width: 576px) {
+}
+
+
+@media(max-width: 1720px) {
+    .main {
+        grid-template-columns: 20% 60% 20%;
+    }
+
+    .left-block {
+        grid-column: 2;
+    }
+
+    .right-block__graph {
+        display: none;
+    }
+
+    .exchanges-img {
+        max-width: 480px;
+    }
+}
+
+@media(max-width: 1200px) {
+    .main {
+        width: 95%;
+    }
+
+    .courses {
+        width: 95%;
+    }
+
+    .exchanges {
+        width: 95%;
+        grid-template-columns: 100%;
+        grid-template-rows: min-content min-content;
+        gap: 0;
+        grid-row-gap: 40px;
+    }
+
+    .exchanges__block {
+        padding: 30px;
+        margin-top: 40px;
+    }
+
+    .advantages {
+        width: 75%;
+    }
+
+    .register-section {
+        width: 95%;
+    }
+}
+
+@media(max-width: 992px) {
+    .courses-table__row {
+        grid-template-columns: 100%;
+        grid-template-rows: 20% 20% 20% 20% 20%;
+    }
+
+    .courses-table__row__item {
+        padding: 20px;
+        border-bottom: 1px solid #232F3F;
+    }
+
+    .courses-table__head__item-start {
+        justify-content: center;
+    }
+
+    .exchanges {
+        grid-row-gap: 60px;
+    }
+
+    .advantages {
+        width: 95%;
+    }
+}
+
+
+@media(max-width: 768px) {
+    .main {
+        grid-template-columns: 5% 90% 5%;
+    }
+
+    .left-block {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .left-block__subtitle {
+        font-size: 62px;
+    }
+
+    .advantages-block {
+        justify-content: center;
+    }
+}
+
+@media(max-width: 576px) {
+    .left-block__subtitle {
+        font-size: 38px;
+    }
+
+    .input-block {
+        width: 100%;
+        grid-template-columns: 1% 69% 29% 1%;
+    }
+
+    .exchanges-img {
+        max-width: 95%;
+    }
+
+    .register-block {
         width: 100%;
         grid-template-columns: 70% 30%;
     }
