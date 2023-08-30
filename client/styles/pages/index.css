@@ -19,15 +19,15 @@
     margin: 0 auto 80px auto;
     grid-template-columns: 48% 52%;
 
-    @media screen and(max-width: 1720px) {
+    @media(max-width: 1720px) {
         grid-template-columns: 20% 60% 20%;
     }
 
-    @media screen and(max-width: 1200px) {
+    @media(max-width: 1200px) {
         width: 95%;
     }
 
-    @media screen and(max-width: 768px) {
+    @media(max-width: 768px) {
         grid-template-columns: 5% 90% 5%;
     }
 }
@@ -37,11 +37,11 @@
     height: max-content;
     background-position: 100% -100px;
 
-    @media screen and(max-width: 1720px) {
+    @media(max-width: 1720px) {
         grid-column: 2;
     }
 
-    @media screen and(max-width: 768px) {
+    @media(max-width: 768px) {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -74,11 +74,11 @@
     line-height: 80px;
     margin-top: 35px;
 
-    @media screen and(max-width: 768px) {
+    @media(max-width: 768px) {
         font-size: 62px;
     }
 
-    @media screen and(max-width: 576px) {
+    @media(max-width: 576px) {
         font-size: 38px;
     }
 }
@@ -95,7 +95,7 @@
     max-width: 640px;
     max-height: 280px;
 
-    @media screen and(max-width: 1720px) {
+    @media(max-width: 1720px) {
         display: none;
     }
 }
@@ -106,7 +106,7 @@
     width: 430px;
     margin-top: 50px;
 
-    @media screen and(max-width: 576px) {
+    @media(max-width: 576px) {
         width: 100%;
         grid-template-columns: 1% 69% 29% 1%;
     }
@@ -183,7 +183,7 @@
     margin: auto;
 
 
-    @media screen and(max-width: 1200px) {
+    @media(max-width: 1200px) {
         width: 95%;
     }
 }
@@ -202,7 +202,7 @@
     grid-template-columns: 52% 12% 12% 12% 12%;
     border-bottom: 1px solid #232F3F;
 
-    @media screen and(max-width: 992px) {
+    @media(max-width: 992px) {
         grid-template-columns: 100%;
         grid-template-rows: 20% 20% 20% 20% 20%;
     }
@@ -214,7 +214,7 @@
     align-items: center;
     padding: 25px;
 
-    @media screen and(max-width: 992px) {
+    @media(max-width: 992px) {
         padding: 20px;
         border-bottom: 1px solid #232F3F;
     }
@@ -223,7 +223,7 @@
 .courses-table__head__item-start {
     justify-content: flex-start;
 
-    @media screen and(max-width: 992px) {
+    @media(max-width: 992px) {
         justify-content: center;
     }
 }
@@ -350,7 +350,7 @@
     grid-template-columns: 45% 50%;
     gap: 5%;
 
-    @media screen and(max-width: 1200px) {
+    @media(max-width: 1200px) {
         width: 95%;
         grid-template-columns: 100%;
         grid-template-rows: min-content min-content;
@@ -358,7 +358,7 @@
         grid-row-gap: 40px;
     }
 
-    @media screen and(max-width: 992px) {
+    @media(max-width: 992px) {
         grid-row-gap: 60px;
     }
 }
@@ -367,7 +367,7 @@
     width: 100%;
     height: auto;
     padding: 60px;
-    @media screen and(max-width: 1200px) {
+    @media(max-width: 1200px) {
         padding: 30px;
         margin-top: 40px;
     }
@@ -404,11 +404,11 @@
 
 .exchanges-img {
     max-width: 580px;
-    @media screen and(max-width: 576px) {
+    @media(max-width: 576px) {
         max-width: 95%;
     }
 
-    @media screen and(max-width: 1720px) {
+    @media(max-width: 1720px) {
         max-width: 480px;
     }
 
@@ -424,11 +424,12 @@
     width: 60%;
     margin: auto;
     height: min-content;
-    @media screen and(max-width: 1200px) {
+
+
+    @media(max-width: 1200px) {
         width: 75%;
     }
-
-    @media screen and(max-width: 992px) {
+    @media(max-width: 992px) {
         width: 95%;
     }
 
@@ -443,7 +444,7 @@
     flex-wrap: wrap;
     gap: 85px;
 
-    @media screen and(max-width: 768px) {
+    @media(max-width: 768px) {
         justify-content: center;
     }
 }
@@ -487,7 +488,7 @@
     flex-direction: column;
     align-items: center;
 
-    @media screen and(max-width: 1200px) {
+    @media(max-width: 1200px) {
         width: 95%;
     }
 }
@@ -511,7 +512,7 @@
     width: 430px;
     margin-bottom: 165px;
 
-    @media screen and(max-width: 576px) {
+    @media(max-width: 576px) {
         width: 100%;
         grid-template-columns: 70% 30%;
     }
