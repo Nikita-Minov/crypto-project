@@ -1,0 +1,11 @@
+.loading-icon-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.loading-icon {
+    margin: 50px;
+    width: 100px;
+    height: 100px;
+}

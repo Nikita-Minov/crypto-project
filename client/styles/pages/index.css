@@ -67,8 +67,9 @@
     display: block;
     max-width: 640px;
     max-height: 280px;
-
-
+    animation: pulse;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
 }
 
 .input-block {
@@ -109,6 +110,11 @@
     padding: 10px 16px;
     display: flex;
     align-items: center;
+    transition: .3s;
+}
+
+.input-wrapper:hover {
+    outline: 1px solid #CEE7FF;
 }
 
 .input-wrapper::before {
@@ -169,6 +175,11 @@
     display: grid;
     grid-template-columns: 52% 12% 12% 12% 12%;
     border-bottom: 1px solid #232F3F;
+}
+
+.courses-table__row-animated {
+    animation: pulse;
+    animation-duration: .5s;
 }
 
 .courses-table__row__item {

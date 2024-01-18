@@ -13,7 +13,7 @@
 </script>
 
 <template>
-  <MobileMenu v-show="mobileMenuActive"/>
+  <MobileMenu :mobile-menu-active="mobileMenuActive"/>
   <Header @activemobilemenu="toggleMobileMenuActive"/>
   <NuxtLayout>
     <NuxtPage/>

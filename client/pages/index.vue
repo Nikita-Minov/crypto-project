@@ -1,50 +1,75 @@
 <script setup lang="ts">
+import {reactive, Ref, ref} from '@vue/reactivity';
 
-  useSeoMeta({
+useSeoMeta({
     title: 'BitList',
     ogTitle: 'BitList',
-    description: 'BitList is a crypto exchange.',
-    ogDescription: 'BitList is a crypto exchange',
+    description: 'BitList - a reliable cryptocurrency exchange with instant transactions. High security, user-friendly interface, and a wide selection of cryptocurrencies. Secure your investments with BitList!',
+    ogDescription: 'BitList - a reliable cryptocurrency exchange with instant transactions. High security, user-friendly interface, and a wide selection of cryptocurrencies. Secure your investments with BitList!',
   })
 
-  const coins = [
-    {name: '1inch', code: '1INCH', icon: '/coins/1inch.svg', value: '-', change: 0, negative: false},
-    {name: 'Bitcoin', code: 'BTC', icon: '/coins/bitcoin.svg', value: '-', change: 0, negative: false},
-    {name: 'Ethereum', code: 'ETH', icon: '/coins/ethereum.svg', value: '-', change: 0, negative: false},
-    {name: 'Binance Coin', code: 'BNB', icon: '/coins/binance-coin.svg', value: '-', change: 0, negative: false},
-    {name: 'Polygon', code: 'MATIC', icon: '/coins/polygon.svg', value: '-', change: 0, negative: false},
-  ];
+  let coins = reactive([
+    {name: '1inch', code: '1INCH', icon: '/coins/1inch.svg', value: '-', change: 0, negative: false, visible: true},
+    {name: 'Bitcoin', code: 'BTC', icon: '/coins/bitcoin.svg', value: '-', change: 0, negative: false, visible: true},
+    {name: 'Ethereum', code: 'ETH', icon: '/coins/ethereum.svg', value: '-', change: 0, negative: false, visible: false},
+    {name: 'Binance Coin', code: 'BNB', icon: '/coins/binance-coin.svg', value: '-', change: 0, negative: false, visible: false},
+    {name: 'Polygon', code: 'MATIC', icon: '/coins/polygon.svg', value: '-', change: 0, negative: false, visible: false},
+  ]);
 
-  for (const coin of coins) {
+ const allCoinsShowed = ref(false);
+ const inLoading = ref(false);
 
-    const { data } = await useFetch(`https://min-api.cryptocompare.com/data/price?tryConversion=false&fsym=${coin.code}&tsyms=USD`, {
-      headers: {
-        'Authorization': 'Apikey ' + 'a1af031ac7ba44f8147206583dcdd1ef681b59083b9cc86af89fd1a1370ba80e',
-      }
-    });
-
-    if(!data?.value['USD']) continue;
-    coin.value = data.value[`USD`];
-  }
-
-  for(const coin of coins) {
-    const { data } = await useFetch(`https://min-api.cryptocompare.com/data/v2/histoday?tryConversion=false&fsym=${coin.code}&tsym=USD&limit=1`, {
-      headers: {
-        'Authorization': 'Apikey ' + 'a1af031ac7ba44f8147206583dcdd1ef681b59083b9cc86af89fd1a1370ba80e',
-      }
-    });
-    if(!data.value.Data.Data[0].open) continue;
-    const change = data.value.Data.Data[0].open/coin.value;
-    if(change >= 1) {
-      coin.negative = true;
-      coin.change = (+((change - 1)))*100;
-      coin.change = +coin.change.toFixed(2);
-    } else {
-      coin.negative = false;
-      coin.change = (+((1- change)))*100;
-      coin.change = +coin.change.toFixed(2);
+  const showAllCoins = () => {
+    allCoinsShowed.value = true;
+    for(let coin of coins) {
+      coin.visible = true;
     }
   }
+
+  const hideCoins = () => {
+    allCoinsShowed.value = false;
+    for(const [id, coin] of coins.entries()) {
+      console.log(id);
+      if(id > 1) coin.visible = false;
+      else coin.visible = true;
+    }
+  }
+
+  const loadingData = async (inLoading: Ref<boolean>) => {
+    inLoading.value = true;
+    for (const coin of coins) {
+      const { data } = await useFetch(`https://min-api.cryptocompare.com/data/price?tryConversion=false&fsym=${coin.code}&tsyms=USD`, {
+        headers: {
+          'Authorization': 'Apikey ' + process.env.TOKEN,
+        }
+      });
+
+      if(!data?.value['USD']) continue;
+      coin.value = data.value[`USD`];
+    }
+
+    for(const coin of coins) {
+      const { data } = await useFetch(`https://min-api.cryptocompare.com/data/v2/histoday?tryConversion=false&fsym=${coin.code}&tsym=USD&limit=1`, {
+        headers: {
+          'Authorization': 'Apikey ' + process.env.TOKEN,
+        }
+      });
+      if(!data.value.Data.Data[0].open) continue;
+      const change = data.value.Data.Data[0].open/coin.value;
+      if(change >= 1) {
+        coin.negative = true;
+        coin.change = (+((change - 1)))*100;
+        coin.change = +coin.change.toFixed(2);
+      } else {
+        coin.negative = false;
+        coin.change = (+((1- change)))*100;
+        coin.change = +coin.change.toFixed(2);
+      }
+    }
+    inLoading.value = false;
+  }
+
+  loadingData(inLoading);
 </script>
 
 <template>
@@ -68,7 +93,8 @@
         <img src="../assets/img/graph.png" class="right-block__graph" alt="graph">
       </div>
     </section>
-    <section class="courses">
+    <Loading v-if="inLoading"/>
+    <section class="courses animate__zoomIn animate__animated" v-else-if="!inLoading">
       <div class="courses-table">
         <div class="courses-table__row">
           <div class="courses-table__row__item courses-table__head__item-start">
@@ -93,38 +119,40 @@
           </div>
         </div>
 
-        <div class="courses-table__row" v-for="coin of coins">
-          <div class="courses-table__row__item courses-table__head__item-start">
-            <div class="coin">
-              <img :src='coin.icon' class="coin__img" alt="coin">
-              <p class="coin__name">{{coin.name}}</p>
-              <p class="coin__code">{{coin.code}}</p>
+        <div v-for="coin of coins">
+          <div class="courses-table__row courses-table__row-animated" v-if="coin.visible">
+            <div class="courses-table__row__item courses-table__head__item-start">
+              <div class="coin">
+                <img :src='coin.icon' class="coin__img" alt="coin">
+                <p class="coin__name">{{coin.name}}</p>
+                <p class="coin__code">{{coin.code}}</p>
+              </div>
             </div>
-          </div>
-          <div class="courses-table__row__item courses-table__head__item-center">
-            <p class="price">
-              $ {{coin.value}}
-            </p>
-          </div>
-          <div class="courses-table__row__item courses-table__head__item-center">
-            <p :class="[coin.negative ? 'change change-negative' : 'change change-positive']">
-              {{coin.change}} %
-            </p>
-          </div>
-          <div class="courses-table__row__item courses-table__head__item-center">
-            <p class="volume">
-              2.000.000M
-            </p>
-          </div>
-          <div class="courses-table__row__item courses-table__head__item-center">
-            <button class="trade-button">
-              Trade
-            </button>
+            <div class="courses-table__row__item courses-table__head__item-center">
+              <p class="price">
+                $ {{coin.value}}
+              </p>
+            </div>
+            <div class="courses-table__row__item courses-table__head__item-center">
+              <p :class="[coin.negative ? 'change change-negative' : 'change change-positive']">
+                {{coin.change}} %
+              </p>
+            </div>
+            <div class="courses-table__row__item courses-table__head__item-center">
+              <p class="volume">
+                2.000.000M
+              </p>
+            </div>
+            <div class="courses-table__row__item courses-table__head__item-center">
+              <button class="trade-button">
+                Trade
+              </button>
+            </div>
           </div>
         </div>
       </div>
-      <button class="view-more-btn">All assets</button>
-
+      <button @click="showAllCoins()" v-if="!allCoinsShowed" class="view-more-btn">Show all assets</button>
+      <button @click="hideCoins()" v-else-if="allCoinsShowed" class="view-more-btn">Hide assets</button>
     </section>
   </div>
   <div class="wrapper">

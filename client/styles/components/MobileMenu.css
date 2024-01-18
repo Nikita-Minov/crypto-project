@@ -24,7 +24,7 @@
     font-weight: 400;
     text-decoration: none;
     color: #464E62;
-    font-size: 28px;
+    font-size: 20px;
 }
 
 .buttons-block-mobile {
@@ -34,8 +34,8 @@
 }
 
 .buttons-block__btn-mobile {
-    width: 160px;
-    height: 60px;
+    width: 130px;
+    height: 40px;
     font-family: 'Inter', sans-serif;
     font-size: 18px;
     font-weight: 500;
