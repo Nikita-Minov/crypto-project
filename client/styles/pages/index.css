@@ -103,7 +103,7 @@
 
 .input-wrapper {
     width: 100%;
-    background-image: radial-gradient(100.04% 100.00% at 50.00% 0.00%, #26314E 0%, #252B3D 100%);
+    background-color: #252B3D;
     height: 42px;
     border-radius: 6px;
     padding: 10px 16px;
@@ -141,7 +141,14 @@
     position: relative;
     right: 5px;
     color: #08090B;
-    background: radial-gradient(100.04% 100.00% at 50.00% 0.00%, #66CBF9 0%, #0FB5FF 100%);
+    background-color: #0FB5FF;
+    transition: .3s;
+}
+
+.input-block__signin-btn:hover {
+    background-color: #252B3D;
+    color: #0FB5FF;
+    border: 1px solid #0FB5FF;
 }
 
 .courses {
@@ -273,13 +280,19 @@
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+    transition: .3s;
+}
+
+.trade-button:hover {
+    color: #11161f;
+    background-color: #2FBDFC;
 }
 
 .view-more-btn {
     width: 100%;
     padding: 10px 24px;
     border-radius: 8px;
-    background: radial-gradient(100.04% 100.00% at 50.00% 0.00%, #26314E 0%, #1E253C 100%);
+    background-color: #1E253C;
     color: #CEE7FF;
     font-family: 'Inter', sans-serif;
     font-size: 18px;
@@ -288,6 +301,12 @@
     line-height: normal;
     box-shadow: 0 -1px 1px #334062;
     margin-bottom: 90px;
+    transition: .3s;
+}
+
+.view-more-btn:hover {
+    background-color: #0FB5FF;
+    color: #08090B;
 }
 
 .exchanges {

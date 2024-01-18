@@ -99,6 +99,11 @@
     text-decoration: none;
     color: #464E62;
     font-size: 18px;
+    transition: .3s;
+}
+
+.search-bar__nav__list__item__link:hover {
+    color: #CEE7FF;
 }
 
 .buttons-block {
@@ -119,12 +124,25 @@
 
 .buttons-block__btn-dark-style {
     color: #CEE7FF;
-    background: radial-gradient(100.04% 100.00% at 50.00% 0.00%, #26314E 0%, #1E253C 100%);
+    background-color: #1E253C;
+    transition: .3s;
+}
+
+.buttons-block__btn-dark-style:hover {
+    color: #1E253C;
+    background-color: #CEE7FF;
 }
 
 .buttons-block__btn-light-style {
     color: #08090B;
-    background: radial-gradient(100.04% 100.00% at 50.00% 0.00%, #66CBF9 0%, #0FB5FF 100%);
+    background-color: #0FB5FF;
+    transition: .3s;
+}
+
+.buttons-block__btn-light-style:hover {
+    background-color: #08090B;
+    border: 1px solid #0FB5FF;
+    color: #0FB5FF;
 }
 
 .line {

@@ -12,17 +12,17 @@
     {name: 'Bitcoin', code: 'BTC', icon: '/coins/bitcoin.svg', value: '-', change: 0, negative: false},
     {name: 'Ethereum', code: 'ETH', icon: '/coins/ethereum.svg', value: '-', change: 0, negative: false},
     {name: 'Binance Coin', code: 'BNB', icon: '/coins/binance-coin.svg', value: '-', change: 0, negative: false},
-    {name: 'Binance USD', code: 'BUSD', icon: '/coins/binance-usd.svg', value: '-', change: 0, negative: false},
     {name: 'Polygon', code: 'MATIC', icon: '/coins/polygon.svg', value: '-', change: 0, negative: false},
   ];
 
-
   for (const coin of coins) {
+
     const { data } = await useFetch(`https://min-api.cryptocompare.com/data/price?tryConversion=false&fsym=${coin.code}&tsyms=USD`, {
       headers: {
-        'Authorization': 'Apikey ' + process.env.TOKEN,
+        'Authorization': 'Apikey ' + 'a1af031ac7ba44f8147206583dcdd1ef681b59083b9cc86af89fd1a1370ba80e',
       }
     });
+
     if(!data?.value['USD']) continue;
     coin.value = data.value[`USD`];
   }
@@ -30,7 +30,7 @@
   for(const coin of coins) {
     const { data } = await useFetch(`https://min-api.cryptocompare.com/data/v2/histoday?tryConversion=false&fsym=${coin.code}&tsym=USD&limit=1`, {
       headers: {
-        'Authorization': 'Apikey ' + process.env.TOKEN,
+        'Authorization': 'Apikey ' + 'a1af031ac7ba44f8147206583dcdd1ef681b59083b9cc86af89fd1a1370ba80e',
       }
     });
     if(!data.value.Data.Data[0].open) continue;
@@ -124,6 +124,7 @@
         </div>
       </div>
       <button class="view-more-btn">All assets</button>
+
     </section>
   </div>
   <div class="wrapper">
@@ -218,6 +219,6 @@
   </div>
 </template>
 
-<style>
-@import url('~/styles/pages/index.css');
+<style scoped>
+@import '@/styles/pages/index.css';
 </style>
